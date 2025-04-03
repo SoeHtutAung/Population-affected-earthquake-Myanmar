@@ -9,7 +9,8 @@ library(sf)
 library(dplyr)
 library(terra)
 library(exactextractr)
-library(tmap)
+library(mapview)
+library(leaflet)
 
 # get datasets
 # ward boundaries from MIMU v9.4
