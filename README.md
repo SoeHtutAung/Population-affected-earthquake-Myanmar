@@ -15,3 +15,8 @@ Modified Mercalli Intensity ([MMI](https://www.usgs.gov/programs/earthquake-haza
 
 ## 3. Producing datasets
 We rescale the population according to World Bank's estimates for 2023 and projected for 2024 using average population growth rate. Total population and population in each intensity categories are extracted using exactextractr package. Proportion of population who experienced severe (MMI scale - 8) or violent (MMI scale - 9) for each township is used to display in the maps.
+
+## 4. Results
+### 4.1 Maps
+Percentage of population who experienced violent intensity in wards of Mandalay
+![ward_mdy](https://github.com/user-attachments/assets/06dedb61-a75d-4df7-841c-69f37a3ec717)
