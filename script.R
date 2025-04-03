@@ -149,16 +149,36 @@ tsp_mdy_vis <- prepare_tsp_vis("Mandalay")
 tsp_npt_vis <- prepare_tsp_vis("Nay Pyi Taw")
 tsp_bgo_vis <- prepare_tsp_vis("Bago")
 
-# produce maps
-## wards of Mandalay
-tm_map_mdy <- tm_shape(ward_mdy) +
-  tm_fill("extreme_pct", style = "quantile", palette = "YlOrRd") +
-  tm_borders() +
-  tm_layout(title = "Population in Extreme Intensity Category (Ward Level)",
-            title.size = 1.5,
-            legend.title.size = 1.2,
-            legend.text.size = 0.8,
-            legend.position = c("left", "bottom"),
-            legend.outside = TRUE)
+#### 3.1 Produce maps ####
+# create color palette
+ward_pal <- colorRampPalette(c("lightyellow", "orange", "red"))
+tsp_pal <- colorRampPalette(c("lightyellow", "orange", "red"))(4)  # 4 intervals
 
-# produce tables
+# wards of Mandalay
+ward_mdy_map <- mapview(ward_mdy_vis, zcol = "extreme_pct",
+        col.regions = ward_pal (10), at = seq(0, 100, 25),
+        layer.name = " ",
+        legend = TRUE)
+## create township boundary map (Outline Only)
+tsp_boundary_mdy <- mapview(tsp_mdy_vis, 
+                   col.regions = "darkgrey",  # Black outline
+                   alpha.regions = 0,  # Make fill transparent
+                   lwd = 2,  # Line width
+                   layer.name = "Township Boundaries")
+## print maps
+ward_mdy_map + tsp_boundary_mdy 
+
+# tsp maps
+tsp_mdy_map <- mapview(tsp_mdy_vis %>% filter (vstrong_pct>0), zcol = "vstrong_pct",
+                       col.regions = tsp_pal, at = seq(0, 100, 25),
+                       layer.name = " ",
+                       legend = TRUE)
+tsp_boundary_mdy <- mapview(tsp_mdy_vis, 
+                       col.regions = "darkgrey",  # Black outline
+                       alpha.regions = 0,  # Make fill transparent
+                       lwd = .5,  # Line width
+                       layer.name = "Township Boundaries")
+## print maps
+tsp_mdy_map + tsp_boundary_mdy
+
+#### 3.1 Produce tables ####
