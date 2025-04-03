@@ -182,4 +182,24 @@ tsp_boundary_mdy <- mapview(tsp_mdy_vis,
 ## print maps
 tsp_mdy_map + tsp_boundary_mdy
 
-#### 3.1 Produce tables ####
+#### 3.2 Produce tables ####
+# wards of mandalay
+## create table
+ward_mdy_tbl <- ward_mdy_vis %>% select (
+  TS, WARD, WARD_MMR, pop, pop_9) %>% mutate (
+    pop_pct = round(pop_9/pop * 100, 1),
+    pop_pct = paste0(round(pop_pct, 1), "%"),
+    pop_9 = format(round(pop_9, 0), big.mark = ","),
+    pop = format(round(pop, 0), big.mark = ",")) %>% arrange(desc(pop_9)) %>% rename(
+                      `Township` = TS,
+                      `Ward` = WARD,
+                      `Ward MMR` = WARD_MMR,
+                      `Total` = pop,
+                      `Experienced violent intensity` = pop_9,
+                      `Percentage` = pop_pct) %>% st_drop_geometry() 
+## print table
+ward_mdy_tbl %>%
+  kbl() %>% kable_styling("striped") %>%
+  add_header_above(c(" ", " ", " ", "Population" = 3)) %>%
+  footnote(general = "Calculated from MMI intensity scale layer from USGS and UN adjusted population density from WorldPop")
+ 
