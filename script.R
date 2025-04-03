@@ -125,37 +125,29 @@ for (cat in names(categories)) {
 st_write(tsp, "data/township.geojson", delete_dsn = TRUE)
 
 #### 3. Visualization ####
-# prepare dataframes
-## prepare dataframe for Mandalay
+# prepare dataframe for Mandalay
 ward_mdy_vis <- ward_mdy %>% 
   select(TS, WARD, WARD_MMR,
          pop, pop_below7, pop_7, pop_8, pop_9) %>% 
   mutate(
     extreme_pct = round(pop_9/ pop * 100, 2))
-## prepare dataframe for tsps in SGG
-tsp_sgg_vis <- tsp %>% 
-  filter(ST == "Sagaing") %>%
-  select(TS, pop, pop_below7, pop_7, pop_8, pop_9) %>% 
-  mutate(
-    vstrong_pct = round((pop_8 + pop_9)/ pop * 100, 2))
-## prepare dataframe for tsps in MDY
-tsp_mdy_vis <- tsp %>% 
-  filter(ST == "Mandalay") %>%
-  select(TS, pop, pop_below7, pop_7, pop_8, pop_9) %>% 
-  mutate(
-    vstrong_pct = round((pop_8 + pop_9)/ pop * 100, 2))
-## prepare dataframe for tsps in NPT
-tsp_npt_vis <- tsp %>% 
-  filter(ST == "Nay Pyi Taw") %>%
-  select(TS, pop, pop_below7, pop_7, pop_8, pop_9) %>% 
-  mutate(
-    vstrong_pct = round((pop_8 + pop_9)/ pop * 100, 2))
-## prepare dataframe for tsps in BGO
-tsp_bgo_vis <- tsp %>% 
-  filter(grepl("^Bago", ST)) %>%
-  select(TS, pop, pop_below7, pop_7, pop_8, pop_9) %>% 
-  mutate(
-    vstrong_pct = round((pop_8 + pop_9)/ pop * 100, 2))
+
+# prepare dataframe for tsps
+state_name <- c("Sagaing", "Mandalay", "Nay Pyi Taw", "Bago") # create a list of states
+## create a function to prepare the data for a specific state
+prepare_tsp_vis <- function(state_name) {
+  tsp %>%
+    filter((state_name == "Bago" & grepl("^Bago", ST)) | (state_name != "Bago" & ST == state_name)) %>%
+    select(DT, TS, TS_MMR, pop, pop_below7, pop_7, pop_8, pop_9) %>%
+    mutate(
+      vstrong_pct = round((pop_8 + pop_9) / pop * 100, 2)
+    )
+}
+## prepare data for each state
+tsp_sgg_vis <- prepare_tsp_vis("Sagaing")
+tsp_mdy_vis <- prepare_tsp_vis("Mandalay")
+tsp_npt_vis <- prepare_tsp_vis("Nay Pyi Taw")
+tsp_bgo_vis <- prepare_tsp_vis("Bago")
 
 # produce maps
 ## wards of Mandalay
