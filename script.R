@@ -203,3 +203,24 @@ ward_mdy_tbl %>%
   add_header_above(c(" ", " ", " ", "Population" = 3)) %>%
   footnote(general = "Calculated from MMI intensity scale layer from USGS and UN adjusted population density from WorldPop")
  
+# townships
+## create table
+tsp_bgo_tbl <- tsp_bgo_vis %>% filter (pop_8>0) %>% select (
+  DT, TS, TS_MMR, pop, pop_8, pop_9) %>% mutate (
+    pop_pct = round((pop_8 + pop_9)/pop * 100, 1),
+    pop_pct = paste0(round(pop_pct, 1), "%"),
+    pop_8 = format(round(pop_8, 0), big.mark = ","),
+    pop_9 = format(round(pop_9, 0), big.mark = ","),
+    pop = format(round(pop, 0), big.mark = ",")) %>% arrange(desc(pop_9)) %>% rename(
+      `District` = DT,
+      `Township` = TS,
+      `Township MMR` = TS_MMR,
+      `Total` = pop,
+      `Experienced severe intensity` = pop_8,
+      `Experienced violent intensity` = pop_9,
+      `Percentage` = pop_pct) %>% st_drop_geometry() 
+## print table
+tsp_bgo_tbl %>%
+  kbl() %>% kable_styling("striped") %>%
+  add_header_above(c(" ", " ", " ", "Population" = 4)) %>%
+  footnote(general = "Calculated from MMI intensity scale layer from USGS and UN adjusted population density from WorldPop")
