@@ -14,4 +14,4 @@ Modified Mercalli Intensity ([MMI](https://www.usgs.gov/programs/earthquake-haza
 ![mmi](https://github.com/user-attachments/assets/3698c6b4-2942-4c2e-8ebb-19843149642b)
 
 ## 3. Producing datasets
-We rescale the population according to World Bank's estimates for 2023 and projected for 2024 using average population growth rate. Total population and population in each intensity categories are extracted using exactextractr package.
+We rescale the population according to World Bank's estimates for 2023 and projected for 2024 using average population growth rate. Total population and population in each intensity categories are extracted using exactextractr package. Proportion of population who experienced severe (MMI scale - 8) or violent (MMI scale - 9) for each township is used to display in the maps.
