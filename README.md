@@ -1,5 +1,5 @@
 # Population estimation according to USGS MMI scale
-The purpose is to support post-disaster humanitarian assistance by generate population estimation in each USGS's Modified Mercalli Intensity Scale for 2025 Myanmar earthquake. In this analysis we emphasize on Sagaing, Mandalay, Bago and Naypyitaw regions at township level. Additional anlaysis was done at ward level for Mandalay and Sagaing.
+The purpose is to support post-disaster humanitarian assistance by generate population estimation in each USGS's Modified Mercalli Intensity Scale for 2025 Myanmar earthquake. In this analysis we emphasize on Sagaing, Mandalay, Bago and Naypyitaw regions at township level. Additional anlaysis was done at ward level for Mandalay and Sagaing. Public version of the outputs could be seen in this [Canva](https://soehtutaung.my.canva.site/ota-earthquake-tsp) site.
 
 ## 1. Data extraction
 Following data are extracted
@@ -17,7 +17,7 @@ Modified Mercalli Intensity ([MMI](https://www.usgs.gov/programs/earthquake-haza
 We rescale the population according to [World Bank](https://databank.worldbank.org/reports.aspx?source=2&country=MMR)'s estimates for 2023 and projected for 2024 using average population growth rate. Total population and population in each intensity categories are extracted using exactextractr package. Proportion of population who experienced severe (MMI scale - 8) or violent (MMI scale - 9) for each township is used to display in the maps.
 
 ## 4. Results
-### 4.1 Maps
+### 4.1 Maps and datasets
 Percentage of population who experienced violent intensity in wards of Mandalay <br/>
 <img src=https://github.com/user-attachments/assets/06dedb61-a75d-4df7-841c-69f37a3ec717 title="ward_mdy" width="340"> 
 <img src=https://github.com/user-attachments/assets/dda7a92d-b517-41c4-83b4-e7a65eb7f5a1 title="ward_mdy_tbl" width="600"> <br/>
@@ -37,3 +37,9 @@ Percentage of population who experienced severe or violent intensity in township
 Percentage of population who experienced severe or violent intensity in townships of Bago <br/>
 <img src=https://github.com/user-attachments/assets/5d1289be-ffe7-494c-8332-dd6d14291c64 title="tsp_bgo" width="400"> 
 <img src=https://github.com/user-attachments/assets/e5559152-39ec-46ae-8b98-fd584c665243 title="tsp_bgo_tbl" width="570"> <br/>
+
+### 4.2 Public Website (Canva site)
+The results were displayed in Canva site ([Click Here!](https://soehtutaung.my.canva.site/ota-earthquake-tsp)) using Flourish. Screenshots are as below:
+<img src=https://github.com/user-attachments/assets/17e3cbc2-5b14-4d1d-a4fa-0999dfdc38a6 title="pg1" width="700"> 
+<img src=https://github.com/user-attachments/assets/b5280551-bccd-4d2c-ac9b-1fcfa1693560 title="pg2" width="700"> 
+<img src=https://github.com/user-attachments/assets/682bfda6-897a-4c66-8ad4-7a1d0f8b97f7 title="pg3" width="700"> 
