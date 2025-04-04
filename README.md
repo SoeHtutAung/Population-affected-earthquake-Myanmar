@@ -1,5 +1,5 @@
 # Population estimation according to USGS MMI scale
-The purpose is to support post-disaster humanitarian assistance by generate population estimation in each USGS's Modified Mercalli Intensity Scale for 2025 Myanmar earthquake. In this analysis we emphasize on Sagaing, Mandalay, Bago and Naypyitaw regions at township level. Additional anlaysis was done at ward level for Mandalay and Sagaing. Public version of the outputs could be seen in this [Canva](https://soehtutaung.my.canva.site/ota-earthquake-tsp) site.
+The purpose is to support post-disaster humanitarian assistance by generating population estimation according to USGS's Modified Mercalli Intensity Scale for 2025 Myanmar earthquake. In this analysis, we emphasize on Sagaing, Mandalay, Bago and Naypyitaw regions at township level. Additional anlaysis was done at ward level for Mandalay and Sagaing. Public version of the outputs could be seen in this [Canva](https://soehtutaung.my.canva.site/ota-earthquake-tsp) site.
 
 ## 1. Data extraction
 Following data are extracted
